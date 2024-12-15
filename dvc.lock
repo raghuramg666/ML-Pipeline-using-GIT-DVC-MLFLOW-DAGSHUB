@@ -43,3 +43,18 @@ stages:
       hash: md5
       md5: e57db457dcd7a98e160f30d1acd9fd0b
       size: 2870382
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - path: data/preprocessed/data.csv
+      hash: md5
+      md5: 478f6c9945e87f23d6e32638adf17e50
+      size: 23960
+    - path: models/random_forest.pkl
+      hash: md5
+      md5: e57db457dcd7a98e160f30d1acd9fd0b
+      size: 2870382
+    - path: src/evaluate.py
+      hash: md5
+      md5: 45613cb04427b5e0baa112297e2db996
+      size: 1091
