@@ -1,0 +1,7 @@
+[cache]
+    dir = cache
+    type = copy
+    shared = group
+['remote "origin"']
+    url = s3://dvc
+    endpointurl = https://dagshub.com/raghupy1998/MachineLearningPipeline.s3

@@ -1,0 +1,45 @@
+schema: '2.0'
+stages:
+  preprocess_p:
+    cmd: python src/preprocess.py
+    deps:
+    - path: data/raw/data.csv
+      hash: md5
+      md5: 739f3c9177b13d1c15aa060046cfb023
+      size: 23872
+    - path: src/preprocess.py
+      hash: md5
+      md5: bab09939dcc7dfee08e1df30cf1fe06d
+      size: 486
+    params:
+      params.yaml:
+        preprocess.input: data/raw/data.csv
+        preprocess.output: data/preprocessed/data.csv
+    outs:
+    - path: data/preprocessed/data.csv
+      hash: md5
+      md5: 478f6c9945e87f23d6e32638adf17e50
+      size: 23960
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/preprocessed/data.csv
+      hash: md5
+      md5: 478f6c9945e87f23d6e32638adf17e50
+      size: 23960
+    - path: src/train.py
+      hash: md5
+      md5: cfa5f9cb35a3cc7dcd07152a55c8f54e
+      size: 3501
+    params:
+      params.yaml:
+        train.data: data/raw/data.csv
+        train.max_depth: 5
+        train.model: models/model.pkl
+        train.n_estimators: 100
+        train.random_state: 42
+    outs:
+    - path: models/random_forest.pkl
+      hash: md5
+      md5: e57db457dcd7a98e160f30d1acd9fd0b
+      size: 2870382
